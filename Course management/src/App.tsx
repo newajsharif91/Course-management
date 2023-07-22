@@ -1,35 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// App.tsx
+import React from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import LoginPage from './components/LoginPage';
+import HomePage from './components/HomePage';
+import Dashboard from './components/Dashboard';
+import RegisterPage from './components/RegisterPage';
 
-function App() {
-  const [count, setCount] = useState(0)
+// Add react-router-dom routes here if needed
+
+const App: React.FC = () => {
+  // Implement routing logic using react-router-dom if needed
+  // For example, show LoginPage by default, and after login, show Dashboard or HomePage based on the user role
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1></h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        <Route path='/login' element={<LoginPage />} />
+        <Route path='/register' element={<RegisterPage/>}/>
+        <Route path='/dashboard' element={<Dashboard />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
 
-export default App
+export default App;
